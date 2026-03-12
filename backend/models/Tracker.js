@@ -1,8 +1,15 @@
 const mongoose = require("mongoose");
 
-const trackerSchema = new mongoose.Schema({
-  userId: String,
-  data: Object
+const TrackerSchema = new mongoose.Schema({
+  userId: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  data: {
+    type: mongoose.Schema.Types.Mixed,
+    default: {}
+  }
 });
 
-module.exports = mongoose.model("Tracker", trackerSchema);
+module.exports = mongoose.model("Tracker", TrackerSchema);
